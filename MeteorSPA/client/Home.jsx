@@ -1,5 +1,5 @@
 const { RaisedButton } = mui;
-Hello = React.createClass({
+Home = React.createClass({
   render(){
     return (
       <div>
