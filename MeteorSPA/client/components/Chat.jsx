@@ -3,14 +3,17 @@ Chat = React.createClass({
 
   getMeteorData() {
     Meteor.subscribe("userData");
+    Meteor.subscribe("messages");
     return {
-      currentUser: Meteor.user()
+      currentUser: Meteor.user(),
+      messages: Messages.find({}, {sort: {createdAt: 1}}).fetch()
     }
   },
   render() {
     return (
       <div className="chat-room">
-        <MessageForm currentUser={this.data.currentUser}/>
+        <MessageList messages={this.data.messages} />
+        <MessageForm currentUser={this.data.currentUser} />
       </div>
     );
   }
